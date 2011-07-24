@@ -55,7 +55,7 @@ class Route
       when /b|d|f|m/  then "BDFM"
       when /j|z/  then "JZ"
       when /n|q|r/  then "NQR"
-      else route
+      else route.upcase
     end
   end
 end

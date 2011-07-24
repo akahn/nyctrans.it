@@ -45,5 +45,9 @@ describe Route do
     it "should point from c to ACE" do
       Route.new("c").service_group.should == "ACE"
     end
+
+    it "should handle the fallback cases" do
+      Route.new("g").service_group.should == "G"
+    end
   end
 end
