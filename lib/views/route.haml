@@ -7,4 +7,4 @@
 %form{:action => "http://mta.info/status/serviceStatus.html", :method => "POST"}
   %input{:name => "lineName", :value => @route.service_group, :type => "hidden"}
   %input{:name => "mode", :value => @route.mta_mode, :type => "hidden"}
-  %input{:type => "submit", :type => "hidden"}
+  %input{:type => "submit", :value => "Service status"}
