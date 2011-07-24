@@ -1,0 +1,10 @@
+- if @route.bus?
+  %a{:href => @route.schedule} Map and schedule
+- else
+  %a{:href => @route.map} Map
+  %a{:href => @route.schedule} Time table
+
+%form{:action => "http://mta.info/status/serviceStatus.html", :method => "POST"}
+  %input{:name => "lineName", :value => @route.service_group, :type => "hidden"}
+  %input{:name => "mode", :value => @route.mta_mode, :type => "hidden"}
+  %input{:type => "submit", :type => "hidden"}
