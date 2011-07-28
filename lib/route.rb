@@ -46,10 +46,6 @@ module Route
       "http://mta.info/nyct/bus/schedule/#{long_boro}/#{padded_route}cur.pdf"
     end
 
-    def map
-      "http://mta.info/nyct/bus/schedule/#{long_boro}/#{padded_route}cur.pdf"
-    end
-
     def mode
       "Buses"
     end

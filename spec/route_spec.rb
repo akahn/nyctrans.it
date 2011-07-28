@@ -22,11 +22,6 @@ describe Route::Bus do
       "http://mta.info/nyct/bus/schedule/bkln/b062cur.pdf"
   end
 
-  it "should have a map URL" do
-    Route::Bus.new("b", "62").map.should ==
-      "http://mta.info/nyct/bus/schedule/bkln/b062cur.pdf"
-  end
-
   it "should find the brooklyn service group" do
     Route::Bus.new('b', '63').service_group.should == "B1 - B83"
     Route::Bus.new('b', '100').service_group.should == "B100 - B103"
