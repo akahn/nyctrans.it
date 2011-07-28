@@ -12,14 +12,12 @@ module Route
     end
   end
 
-  module Service
-    def service
-      ServiceStatus.new(service_group)
-    end
+  def service
+    ServiceStatus.new(service_group)
   end
 
   class Bus
-    include Service
+    include Route
 
     attr_reader :boro, :number
 
@@ -73,7 +71,7 @@ module Route
   end
 
   class Train
-    include Service
+    include Route
 
     attr_reader :route
 
