@@ -1,9 +1,9 @@
 require_relative "../lib/route.rb"
 
 describe Route do
-  context "#boro" do
+  context "#long_boro" do
     it "should be manh" do
-      Route.new("m60").boro.should == "manh"
+      Route.new("m60").long_boro.should == "manh"
     end
   end
 

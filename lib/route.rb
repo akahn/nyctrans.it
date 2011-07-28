@@ -18,7 +18,7 @@ class Route
 
   def schedule
     if bus?
-      "http://mta.info/nyct/bus/schedule/#{boro}/#{padded_route}cur.pdf"
+      "http://mta.info/nyct/bus/schedule/#{long_boro}/#{padded_route}cur.pdf"
     else
       "http://mta.info/nyct/service/pdf/t#{route}cur.pdf"
     end
@@ -26,7 +26,7 @@ class Route
 
   def map
     if bus?
-      "http://mta.info/nyct/bus/schedule/#{boro}/#{padded_route}cur.pdf"
+      "http://mta.info/nyct/bus/schedule/#{long_boro}/#{padded_route}cur.pdf"
     else
       "http://mta.info/nyct/service/#{route}line.htm"
     end
@@ -45,7 +45,7 @@ class Route
   end
 
   # "Long" version of the route's borough
-  def boro
+  def long_boro
     case route
       when /b/  then "bkln"
       when /bx/ then "bronx"
