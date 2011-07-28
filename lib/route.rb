@@ -108,7 +108,7 @@ module Route
     attr_reader :status, :text
 
     def initialize(group)
-      root = document.xpath("//name[.='#{group}']").first.parent
+      root = Nokogiri::XML(document).xpath("//name[.='#{group}']").first.parent
       @status = root.xpath("status").text
       @text = root.xpath("text").text
       @good_service = @status == "GOOD SERVICE"
@@ -120,7 +120,7 @@ module Route
     end
 
     def document
-      Nokogiri::XML(open('http://mta.info/status/serviceStatus.txt'))
+      open 'http://mta.info/status/serviceStatus.txt'
     end
   end
 end

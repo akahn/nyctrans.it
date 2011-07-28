@@ -52,3 +52,43 @@ describe Route::Train do
     Route::Train.new("g").service_group.should == "G"
   end
 end
+
+describe Route::ServiceStatus do
+  class Route::ServiceStatus
+    def document
+      File.read("./spec/service.xml")
+    end
+  end
+
+  context "with good service" do
+    before { @service = Route::ServiceStatus.new("456") }
+
+    it "should show good service" do
+      @service.status.should == "GOOD SERVICE"
+    end
+
+    it "have no text" do
+      @service.text.should == ""
+    end
+
+    it "should report good service" do
+      @service.bad?.should be_false
+    end
+  end
+
+  context "with bad service" do
+    before { @service = Route::ServiceStatus.new("ACE") }
+
+    it "should show work status" do
+      @service.status.should == "PLANNED WORK"
+    end
+
+    it "have a text description" do
+      @service.text.should match("Jamaica Center")
+    end
+
+    it "should report bad service" do
+      @service.bad?.should be_true
+    end
+  end
+end
