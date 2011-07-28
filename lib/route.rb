@@ -31,7 +31,7 @@ module Route
 
     # "Long" version of the route's borough
     def long_boro
-      case route
+      case boro
         when /b/  then "bkln"
         when /bx/ then "bronx"
         when /m/  then "manh"
