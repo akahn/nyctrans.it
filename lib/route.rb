@@ -16,6 +16,10 @@ module Route
     ServiceStatus.new(service_group)
   end
 
+  def bus?
+    is_a? Bus
+  end
+
   class Bus
     include Route
 
