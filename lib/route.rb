@@ -1,66 +1,62 @@
 require 'open-uri'
 require 'nokogiri'
 
-class Route
-  attr_reader :mode, :route, :number, :boro
+module Route
+  def self.new(route)
+    route.downcase!
 
-  def initialize(route)
-    @route = route.downcase
-
-    if @route =~ /(?<boro_code>\D)(?<number>\d+)/
-      @boro = $~[:boro_code]
-      @number = $~[:number]
-      @mode = :bus
+    if match = route.match(/(?<boro>\D)(?<number>\d+)/)
+      Bus.new(match[:boro], match[:number])
     else
-      @mode = :train
+      Train.new(route)
     end
   end
 
-  def schedule
-    if bus?
+  module Service
+    def service
+      ServiceStatus.new(service_group)
+    end
+  end
+
+  class Bus
+    include Service
+
+    attr_reader :boro, :number
+
+    def initialize(boro, number)
+      @boro = boro
+      @number = number
+      self
+    end
+
+    # "Long" version of the route's borough
+    def long_boro
+      case route
+        when /b/  then "bkln"
+        when /bx/ then "bronx"
+        when /m/  then "manh"
+        when /q/  then "queens"
+        when /x/  then "xpress"
+      end
+    end
+
+    def schedule
       "http://mta.info/nyct/bus/schedule/#{long_boro}/#{padded_route}cur.pdf"
-    else
-      "http://mta.info/nyct/service/pdf/t#{route}cur.pdf"
     end
-  end
 
-  def map
-    if bus?
+    def map
       "http://mta.info/nyct/bus/schedule/#{long_boro}/#{padded_route}cur.pdf"
-    else
-      "http://mta.info/nyct/service/#{route}line.htm"
     end
-  end
 
-  def bus?
-    mode == :bus
-  end
-
-  def mta_mode
-    bus? ? "Buses" : "Subways"
-  end
-
-  def padded_route
-     boro + ("%03d" % number)
-  end
-
-  # "Long" version of the route's borough
-  def long_boro
-    case route
-      when /b/  then "bkln"
-      when /bx/ then "bronx"
-      when /m/  then "manh"
-      when /q/  then "queens"
-      when /x/  then "xpress"
+    def mode
+      "Buses"
     end
-  end
 
-  def service
-    ServiceStatus.new(service_group)
-  end
+    def padded_route
+       boro << ("%03d" % number)
+    end
 
-  def service_group
-    if bus?
+    def service_group
       case boro
         when 'b'   then (1..83).include?(number.to_i) ? "B1 - B83" : "B100 - B103"
         when 'bm'  then "BM1 - BM5"
@@ -73,7 +69,31 @@ class Route
         when 's'   then "S40 - S98"
         when 'x'   then "x1 - x68"
       end
-    else
+    end
+  end
+
+  class Train
+    include Service
+
+    attr_reader :route
+
+    def initialize(route)
+      @route = route
+    end
+
+    def schedule
+      "http://mta.info/nyct/service/pdf/t#{route}cur.pdf"
+    end
+
+    def map
+      "http://mta.info/nyct/service/#{route}line.htm"
+    end
+
+    def mode
+      "Subways"
+    end
+
+    def service_group
       case route
         when /1|2|3/   then "456"
         when /4|5|6/   then "456"
