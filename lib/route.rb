@@ -61,32 +61,8 @@ class Route
 
   def service_group
     if bus?
-      BusLineGroup.new(boro, number).to_s
-    else
-      case route
-        when /1|2|3/   then "456"
-        when /4|5|6/   then "456"
-        when /a|c|e/   then "ACE"
-        when /b|d|f|m/ then "BDFM"
-        when /j|z/     then "JZ"
-        when /n|q|r/   then "NQR"
-        else route.upcase
-      end
-    end
-  end
-
-  class BusLineGroup
-    attr_reader :boro, :number
-
-    def initialize(boro, number)
-      @boro = boro
-      @number = number.to_i
-      self
-    end
-
-    def to_s
       case boro
-        when 'b'   then (1..83).include? number ? "B1 - B83" : "B100 - B103"
+        when 'b'   then (1..83).include?(number.to_i) ? "B1 - B83" : "B100 - B103"
         when 'bm'  then "BM1 - BM5"
         when 'bx'  then "BX1 - BX55"
         when 'bxm' then "BXM1 - BXM18"
@@ -96,6 +72,16 @@ class Route
         when 'qm'  then "QM1 - QM25"
         when 's'   then "S40 - S98"
         when 'x'   then "x1 - x68"
+      end
+    else
+      case route
+        when /1|2|3/   then "456"
+        when /4|5|6/   then "456"
+        when /a|c|e/   then "ACE"
+        when /b|d|f|m/ then "BDFM"
+        when /j|z/     then "JZ"
+        when /n|q|r/   then "NQR"
+        else route.upcase
       end
     end
   end

@@ -27,6 +27,11 @@ describe Route do
       Route.new("b62").map.should ==
         "http://mta.info/nyct/bus/schedule/bkln/b062cur.pdf"
     end
+
+    it "should find the brooklyn service group" do
+      Route.new('b63').service_group.should == "B1 - B83"
+      #Route.new('b100').service_group.should == "B100 - B103"
+    end
   end
 
   context "train" do
