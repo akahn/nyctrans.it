@@ -17,6 +17,10 @@ describe Route::Bus do
     Route::Bus.new("m", "60").long_boro.should == "manh"
   end
 
+  it "should be able to zero-pad the route" do
+    Route::Bus.new("m", "60").padded_route.should == "m060"
+  end
+
   it "should have a schedule URL" do
     Route::Bus.new("b", "62").schedule.should ==
       "http://mta.info/nyct/bus/schedule/bkln/b062cur.pdf"
