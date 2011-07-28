@@ -54,6 +54,10 @@ module Route
        boro << ("%03d" % number)
     end
 
+    def to_s
+      (boro << number).upcase!
+    end
+
     def service_group
       case boro
         when 'b'   then (1..83).include?(number.to_i) ? "B1 - B83" : "B100 - B103"
@@ -89,6 +93,10 @@ module Route
 
     def mode
       "Subways"
+    end
+
+    def to_s
+      route.upcase!
     end
 
     def service_group
