@@ -4,7 +4,6 @@
   %a{:href => @route.map} Map
   %a{:href => @route.schedule} Time table
 
-%form{:action => "http://mta.info/status/serviceStatus.html", :method => "POST"}
-  %input{:name => "lineName", :value => @route.service_group, :type => "hidden"}
-  %input{:name => "mode", :value => @route.mta_mode, :type => "hidden"}
-  %input{:type => "submit", :value => "Service status"}
+= @route.service.status
+- if @route.service.bad?
+  = @route.service.text
