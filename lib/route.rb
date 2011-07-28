@@ -112,7 +112,6 @@ module Route
       @status = root.xpath("status").text
       @text = root.xpath("text").text
       @good_service = @status == "GOOD SERVICE"
-      self
     end
 
     def bad?
