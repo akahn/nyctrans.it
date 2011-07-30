@@ -1,0 +1,11 @@
+Choose a subway line:
+- Route::LINES.each do |color, lines|
+  .row
+    - lines.each do |line|
+      %a.train{class: color, href: "/" + line}= line
+
+Or enter a bus route:
+%form{action: '/'}
+  %label{for: 'bus-route'} For example, 'b43' or 'QM5'
+  %input#bus-route{name: "route"}
+  %input{type: 'submit', value: 'Go'}
