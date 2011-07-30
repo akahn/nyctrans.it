@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'nokogiri'
-require_relative './nyctrans_it/home_view'
 
 module Route
   LINES = {
