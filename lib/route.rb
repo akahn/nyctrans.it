@@ -132,11 +132,10 @@ module Route
       root = Nokogiri::XML(document).xpath("//name[.='#{group}']").first.parent
       @status = root.xpath("status").text
       @text = root.xpath("text").text
-      @good_service = @status == "GOOD SERVICE"
     end
 
     def bad?
-      !@good_service
+      @status != "GOOD SERVICE"
     end
 
     def document
