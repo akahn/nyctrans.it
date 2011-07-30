@@ -1,6 +1,7 @@
 - if @route.bus?
   %a{:href => @route.schedule} Map and schedule
 - else
+  .train= @route.to_s
   %a{:href => @route.map} Map
   %a{:href => @route.schedule} Time table
 
