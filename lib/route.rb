@@ -113,7 +113,7 @@ module Route
 
     def service_group
       case route
-        when /1|2|3/   then "456"
+        when /1|2|3/   then "123"
         when /4|5|6/   then "456"
         when /a|c|e/   then "ACE"
         when /b|d|f|m/ then "BDFM"
