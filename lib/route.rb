@@ -15,7 +15,7 @@ module Route
   }
 
   def self.new(route)
-    route.downcase!
+    route = route.downcase
 
     if match = route.match(/(?<boro>\D)(?<number>\d+)/)
       Bus.new(match[:boro], match[:number])
@@ -108,7 +108,7 @@ module Route
     end
 
     def to_s
-      route.upcase!
+      route.upcase
     end
 
     def service_group
@@ -125,12 +125,11 @@ module Route
   end
 
   class ServiceStatus
-    attr_reader :status, :text
+    attr_reader :status
 
     def initialize(group)
-      root = Nokogiri::XML(document).xpath("//name[.='#{group}']").first.parent
+      root = Nokogiri::HTML(document).xpath("//name[.='#{group}']").first.parent
       @status = root.xpath("status").text
-      @text = root.xpath("text").text
     end
 
     def bad?
