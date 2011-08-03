@@ -4,10 +4,13 @@ describe Route do
   context ".new" do
     it "should return a bus" do
       Route.new("b63").should be_a(Route::Bus)
+      Route.new("b63").boro.should == 'b'
+      Route.new("b63").number.should == '63'
     end
 
     it "should return a train" do
       Route.new("g").should be_a(Route::Train)
+      Route.new("g").route.should == 'g'
     end
   end
 end
