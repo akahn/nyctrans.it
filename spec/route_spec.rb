@@ -63,11 +63,7 @@ describe Route::ServiceStatus do
     before { @service = Route::ServiceStatus.new("456") }
 
     it "should show good service" do
-      @service.status.should == "GOOD SERVICE"
-    end
-
-    it "have no text" do
-      @service.text.should == ""
+      @service.status.should == "Good service"
     end
 
     it "should report good service" do
@@ -79,11 +75,7 @@ describe Route::ServiceStatus do
     before { @service = Route::ServiceStatus.new("ACE") }
 
     it "should show work status" do
-      @service.status.should == "PLANNED WORK"
-    end
-
-    it "have a text description" do
-      @service.text.should match("Jamaica Center")
+      @service.status.should == "Planned work"
     end
 
     it "should report bad service" do
