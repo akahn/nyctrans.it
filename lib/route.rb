@@ -125,11 +125,13 @@ module Route
   end
 
   class ServiceStatus
-    attr_reader :status
-
     def initialize(group)
       root = Nokogiri::HTML(document).xpath("//name[.='#{group}']").first.parent
       @status = root.xpath("status").text
+    end
+
+    def status
+      @status.capitalize
     end
 
     def bad?
