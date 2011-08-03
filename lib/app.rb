@@ -72,8 +72,9 @@ __END__
 
     ::-webkit-input-placeholder,
     ::-moz-placeholder {
-      color: white;
+      color: #EEE;
       text-indent: 20px;
+      font-style: oblique;
     }
 
 %body
