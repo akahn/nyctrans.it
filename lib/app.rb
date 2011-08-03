@@ -28,7 +28,7 @@ __END__
 %head
   %title== nyctrans.it - #{@route.to_s}
   :css
-    body {
+    body, input {
       font-family: Helvetica, sans-serif;
     }
 
@@ -56,5 +56,33 @@ __END__
     .orange { background-color: orange; }
     .marigold { background-color: gold; }
     .gray { background-color: gray; }
+
+    #bus-route {
+      border-radius: 10px;
+      width: 200px;
+      color: white;
+      background-color: DarkBlue;
+      font-size: 80px;
+      font-weight: bold;
+      text-align: center;
+      outline: none;
+      border: none;
+      padding: 4px;
+    }
+
+    ::-webkit-input-placeholder,
+    ::-moz-placeholder {
+      color: white;
+      text-indent: 20px;
+    }
+
 %body
   = yield
+
+  :javascript
+    var input = document.getElementById('bus-route');
+    if (input) {
+      input.onkeyup = function(e) {
+        this.value = this.value.toUpperCase();
+      };
+    }
