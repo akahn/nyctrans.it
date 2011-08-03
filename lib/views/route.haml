@@ -1,9 +1,10 @@
 - if @route.bus?
+  %h2.bus= @route.to_s
   %a{:href => @route.schedule} Map and schedule
 - else
-  .train= @route.to_s
+  %h2.train{:class => @route.color}= @route.to_s
   %a{:href => @route.map} Map
-  %a{:href => @route.schedule} Time table
+  %a{:href => @route.schedule} Timetable
 
 = @route.service.status
 - if @route.service.bad?

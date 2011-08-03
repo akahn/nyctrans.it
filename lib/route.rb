@@ -111,6 +111,12 @@ module Route
       route.upcase
     end
 
+    def color
+      LINES.detect do |color, trains|
+        color if trains.include? self.to_s
+      end.first
+    end
+
     def service_group
       case route
         when /1|2|3/   then "123"
