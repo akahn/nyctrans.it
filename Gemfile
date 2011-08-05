@@ -6,6 +6,8 @@ gem 'nokogiri'
 
 group :development do
   gem 'shotgun'
+  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'heroku'
 end
 
 group :test do
