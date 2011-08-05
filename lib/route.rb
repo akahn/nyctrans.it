@@ -100,20 +100,20 @@ module Route
     end
 
     def map
-      "http://mta.info/nyct/service/#{map_route}line.htm"
+      "http://mta.info/nyct/service/#{map_route}.htm"
     end
 
     def map_route
-      return route if route.to_i.zero?
-      case route.to_i
+      return route + "line" if route.to_i.zero?
+      name = case route.to_i
         when 1 then "one"
         when 2 then "two"
-        when 3 then "three"
+        when 3 then return "threelin"
         when 4 then "four"
         when 5 then "five"
         when 6 then "six"
-        when 7 then "seven"
-      end
+        when 7 then return "sevenlin"
+      end + "line"
     end
 
     def mode
