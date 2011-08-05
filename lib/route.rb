@@ -145,7 +145,11 @@ module Route
     end
 
     def document
-      open 'http://mta.info/status/serviceStatus.txt'
+      if ENV['RACK_ENV'] == 'development'
+        open 'http://www.mta.info/status/serviceStatus.txt'
+      else
+        open 'http://nyctransit.heroku.com/api'
+      end
     end
   end
 end
