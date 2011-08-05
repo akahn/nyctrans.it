@@ -8,6 +8,9 @@ class App < Sinatra::Base
   enable :inline_templates
 
   get "/" do
+    cache_control :public, :max_age => 60 * 60 * 24
+
+    # Bus redirect
     if params[:route]
       redirect "/#{params[:route]}"
     else
@@ -21,6 +24,7 @@ class App < Sinatra::Base
   end
 
   get "/:route" do
+    cache_control :public, :max_age => 60 * 60
     @route = Route.new(params[:route])
     haml :route, :locals => {:title => @route.to_s}
   end
