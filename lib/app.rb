@@ -48,6 +48,7 @@ __END__
       font-size: 80px;
       font-weight: bold;
       margin-right: 5px;
+      line-height: 100px;
     }
 
     .row { margin-bottom: 10px }
