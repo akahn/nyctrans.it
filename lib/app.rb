@@ -15,15 +15,16 @@ class App < Sinatra::Base
     end
   end
 
+  get "/api" do
+    cache_control :public, :max_age => 60 * 60
+    open 'http://mta.info/status/serviceStatus.txt'
+  end
+
   get "/:route" do
     @route = Route.new(params[:route])
     haml :route
   end
 
-  get "/api" do
-    cache_control :public, :max_age => 60 * 60
-    open 'http://mta.info/status/serviceStatus.txt'.read
-  end
 end
 
 __END__
