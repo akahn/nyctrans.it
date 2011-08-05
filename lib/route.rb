@@ -3,15 +3,15 @@ require 'nokogiri'
 
 module Route
   LINES = {
-    "red"      => %w{1 2 3},
-    "forest"   => %w{4 5 6},
-    "blue"     => %w{A C E},
-    "orange"   => %w{B D F M},
-    "yellow"   => %w{N Q R},
-    "marigold" => %w{J M Z},
-    "gray"     => %w{L},
-    "purple"   => %w{7},
-    "green"    => %w{G}
+    "red"       => %w{1 2 3},
+    "forest"    => %w{4 5 6},
+    "blue"      => %w{A C E},
+    "orange"    => %w{B D F M},
+    "yellow"    => %w{N Q R},
+    "chocolate" => %w{J Z},
+    "gray"      => %w{L},
+    "purple"    => %w{7},
+    "green"     => %w{G}
   }
 
   def self.new(route)
