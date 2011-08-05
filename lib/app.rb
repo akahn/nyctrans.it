@@ -84,8 +84,18 @@ __END__
       font-style: oblique;
     }
 
+    .container {
+      text-align: center;
+    }
+
+    .footer { margin-top: 10px; }
+
 %body
-  = yield
+  .container
+    = yield
+
+    .footer
+      By <a href=http://akahn.net>Alex Kahn</a> • <a href=https://github.com/akahn/nyctrans.it>Source</a>
 
   :javascript
     var input = document.getElementById('bus-route');

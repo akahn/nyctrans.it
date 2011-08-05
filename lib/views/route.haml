@@ -1,14 +1,19 @@
 - if @route.bus?
   %h2.bus= @route.to_s
-  %a{:href => @route.schedule} Map and schedule
 - else
   %h2.train{:class => @route.color}= @route.to_s
-  %a{:href => @route.map} Map
-  %a{:href => @route.schedule} Timetable
+%h1 Current status:
+%h2
+  = @route.service.status
+  on the #{@route.service_group}
 
-= @route.service.status
 - if @route.service.bad?
   %form{:action => "http://mta.info/status/serviceStatus.html", :method => "POST"}
     %input{:name => "lineName", :value => @route.service_group, :type => "hidden"}
     %input{:name => "mode", :value => @route.mode, :type => "hidden"}
-    %input{:type => "submit", :value => "More information"}
+    %input{:type => "submit", :value => "Get more service information"}
+
+%h2
+  %a{:href => @route.map} Line information
+  •
+  %a{:href => @route.schedule} Timetable
