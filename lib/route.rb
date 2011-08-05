@@ -145,7 +145,7 @@ module Route
     end
 
     def document
-      open 'http://nyctransit.heroku.com/api'
+      open 'http://www.mta.info/status/serviceStatus.txt'
     end
   end
 end
