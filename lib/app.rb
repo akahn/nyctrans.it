@@ -11,7 +11,7 @@ class App < Sinatra::Base
     if params[:route]
       redirect "/#{params[:route]}"
     else
-      haml :home
+      haml :home, :locals => {:title => "Home"}
     end
   end
 
@@ -22,7 +22,7 @@ class App < Sinatra::Base
 
   get "/:route" do
     @route = Route.new(params[:route])
-    haml :route
+    haml :route, :locals => {:title => @route.to_s}
   end
 
 end
@@ -32,7 +32,7 @@ __END__
 @@ layout
 !!!
 %head
-  %title== nyctrans.it - #{@route.to_s}
+  %title== nyctrans.it - #{title}
   :css
     body, input {
       font-family: Helvetica, sans-serif;
