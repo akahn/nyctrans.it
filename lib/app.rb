@@ -22,7 +22,7 @@ class App < Sinatra::Base
 
   get "/api" do
     cache_control :public, :max_age => 60 * 60
-    open 'http://mta.info/status/serviceStatus.txt'
+    open 'http://mta.info/status/serviceStatus.txt'.read
   end
 end
 
