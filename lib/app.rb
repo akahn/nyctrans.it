@@ -88,14 +88,14 @@ __END__
       text-align: center;
     }
 
-    .footer { margin-top: 10px; }
+    .footer {
+      margin-top: 10px;
+      font-size: 13px;
+    }
 
 %body
   .container
     = yield
-
-    .footer
-      By <a href=http://akahn.net>Alex Kahn</a> • <a href=https://github.com/akahn/nyctrans.it>Source</a>
 
   :javascript
     var input = document.getElementById('bus-route');
