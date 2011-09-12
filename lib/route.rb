@@ -63,11 +63,11 @@ module Route
     end
 
     def padded_route
-       boro << ("%03d" % number)
+       boro + ("%03d" % number)
     end
 
     def to_s
-      (boro << number).upcase!
+      (boro + number).upcase!
     end
 
     def service_group
