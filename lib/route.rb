@@ -40,7 +40,6 @@ module Route
     def initialize(boro, number)
       @boro = boro
       @number = number
-      self
     end
 
     # "Long" version of the route's borough
