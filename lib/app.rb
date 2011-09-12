@@ -65,7 +65,7 @@ __END__
     .blue { background-color: blue; }
     .yellow { background-color: yellow; }
     .orange { background-color: orange; }
-    .marigold { background-color: gold; }
+    .chocolate { background-color: chocolate; }
     .gray { background-color: gray; }
 
     .bus {
