@@ -42,7 +42,7 @@ __END__
       font-family: Helvetica, sans-serif;
     }
 
-    .train {
+    .train, .bus {
       border-radius: 50px;
       width: 100px;
       height: 100px;
@@ -67,6 +67,13 @@ __END__
     .orange { background-color: orange; }
     .marigold { background-color: gold; }
     .gray { background-color: gray; }
+
+    .bus {
+      background-color: DarkBlue;
+      border-radius: 5px;
+      padding: 0 10px;
+      width: inherit;
+    }
 
     #bus-route {
       border-radius: 10px;
