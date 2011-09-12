@@ -5,13 +5,13 @@ module Route
   LINES = {
     "red"       => %w{1 2 3},
     "forest"    => %w{4 5 6},
+    "purple"    => %w{7},
     "blue"      => %w{A C E},
     "orange"    => %w{B D F M},
-    "yellow"    => %w{N Q R},
+    "green"     => %w{G},
     "chocolate" => %w{J Z},
     "gray"      => %w{L},
-    "purple"    => %w{7},
-    "green"     => %w{G}
+    "yellow"    => %w{N Q R}
   }
 
   def self.new(route)
